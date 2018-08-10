@@ -25,7 +25,7 @@ bool rotate(int N,
                 if( q[N-1-x][N-1-y] != m[x][y] )
                     return false;
             } else if( degree == 270 ) {
-                if( q[N-1-y][x] != q[x][y] )
+                if( q[N-1-y][x] != m[x][y] )
                     return false;
             }
         }
