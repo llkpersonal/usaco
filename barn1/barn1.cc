@@ -36,11 +36,6 @@ int main() {
         scanf("%d", &barn_id[i]);
     }
     
-    if(C < M) {
-        printf("%d\n", C);
-        return 0;
-    }
-    
     sort(barn_id, barn_id+C);
     
     int ans = barn_id[C-1] - barn_id[0] + 1;
@@ -51,16 +46,9 @@ int main() {
     }
     
     sort(node, node+C-1, compare);
-    sort(node, node+M-1, compare_index);
-    
-    bool flag = true;
-    for(int i = 0; i < M - 1; i++) {
-        if(flag && node[i].index == M - i - 1) {
-            ans = ans - (node[i].length - 1) + 1;
-        } else {
-            flag = false;
-            ans = ans - (node[i].length - 1);
-        }
+
+    for(int i = 0; i < min(C-1, M-1); i++) {
+        ans = ans - (node[i].length - 1);
     }
     
     printf("%d\n", ans);
