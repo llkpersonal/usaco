@@ -51,7 +51,7 @@ int main() {
     }
     
     sort(node, node+C-1, compare);
-    sort(node, node + M - 1, compare_index);
+    sort(node, node+M-1, compare_index);
     
     bool flag = true;
     for(int i = 0; i < M - 1; i++) {
