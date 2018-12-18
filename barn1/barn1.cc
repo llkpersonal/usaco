@@ -7,23 +7,11 @@
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
+#include <functional>
 using namespace std;
 
-struct Node{
-    int length;
-    int index;
-};
-
-Node node[201];
 int barn_id[201];
-
-bool compare(const Node& a, const Node& b) {
-    return a.length > b.length;
-}
-
-bool compare_index(const Node& a, const Node& b) {
-    return a.index > b.index;
-}
+int length[200];
 
 int main() {
     freopen("barn1.in", "r", stdin);
@@ -41,14 +29,13 @@ int main() {
     int ans = barn_id[C-1] - barn_id[0] + 1;
     
     for(int i = 0; i < C-1; i++) {
-        node[i].length = barn_id[i+1] - barn_id[i];
-        node[i].index = i;
+        length[i] = barn_id[i+1] - barn_id[i];
     }
     
-    sort(node, node+C-1, compare);
+    sort(length, length+C-1, greater<int>());
 
     for(int i = 0; i < min(C-1, M-1); i++) {
-        ans = ans - (node[i].length - 1);
+        ans = ans - (length[i] - 1);
     }
     
     printf("%d\n", ans);
